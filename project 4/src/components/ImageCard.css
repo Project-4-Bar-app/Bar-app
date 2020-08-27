@@ -1,0 +1,22 @@
+.imageCard {
+    color: white;
+    width: 500px;
+    height: 400px;
+    padding: 20px;
+    transition: transform 100ms; /* to make trasformation silky smooth */
+}
+.imageCard:hover {
+    transform: scale(1.09);
+}
+
+.imageCard > img {
+    height: 300px;
+    object-fit: contain;
+    width: 300px;
+}
+
+.imageCard > h2 {
+    padding-top: 10px;
+}
+
+.imageCard {}

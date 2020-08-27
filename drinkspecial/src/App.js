@@ -12,8 +12,8 @@ import mp3_file from './images/jazz.mp3';
 
 
 
-const KEYS = process.env.REACT_APP_DRINKING_API_KEY;
-let song= new Audio(mp3_file);
+// const KEY = process.env.REACT_APP_DRINKING_API_KEY;
+// let song= new Audio(mp3_file);
 
 
 class App extends Component {
@@ -54,7 +54,7 @@ class App extends Component {
   //gets random drink info via axios call
   async generateRandomData() {
 
-    const randoms = await axios.get(`https://www.thecocktaildb.com/api/json/v1/${KEYS}/random.php`);
+    const randoms = await axios.get(`https://www.thecocktaildb.com/api/json/v1/${1}/random.php`);
     this.setState({
       rando: randoms.data.drinks,
       drink: [],
@@ -74,7 +74,7 @@ class App extends Component {
   }
   //plays audio file from beginning
 componentDidMount(){
-    song.play();
+    // song.play();
   }
 
 
@@ -82,7 +82,7 @@ componentDidMount(){
 
   //lists all the categories via axios call
   async showCategories() {
-    const info = await axios.get(`https://www.thecocktaildb.com/api/json/v1/${KEYS}/list.php?c=list`);
+    const info = await axios.get(`https://www.thecocktaildb.com/api/json/v1/${1}/list.php?c=list`);
 
     if (this.state.visible === '') {
       this.setState({
@@ -130,7 +130,7 @@ componentDidMount(){
     e.preventDefault();
 
     let ingredientTester=''
-    const info = await axios.get(`https://www.thecocktaildb.com/api/json/v1/${KEYS}/filter.php?i=${this.state.selectIngredient}`);
+    const info = await axios.get(`https://www.thecocktaildb.com/api/json/v1/${1}/filter.php?i=${this.state.selectIngredient}`);
 
     // if the search the individual entered is not an ingredient it will show up
     if(info.data.drinks===undefined){
@@ -154,7 +154,7 @@ componentDidMount(){
 
   async loadIngrident(word) {
 
-    const info = await axios.get(`https://www.thecocktaildb.com/api/json/v1/${KEYS}/filter.php?i=${word}`);
+    const info = await axios.get(`https://www.thecocktaildb.com/api/json/v1/${1}/filter.php?i=${word}`);
 
     if (info.data != false) {
 
@@ -206,7 +206,7 @@ componentDidMount(){
     //finalRender reset back to empty array in order for the filteredIngridents process to begin anew as opposed to add prior filtered ingredients to current ones
     this.setState({finalRender: []})
 
-    const info = await axios.get(`https://www.thecocktaildb.com/api/json/v1/${KEYS}/lookup.php?i=${word}`);
+    const info = await axios.get(`https://www.thecocktaildb.com/api/json/v1/${1}/lookup.php?i=${word}`);
 
 
     this.setState({
@@ -233,7 +233,7 @@ componentDidMount(){
 
   async searchRender(word) {
 
-    const info = await axios.get(`https://www.thecocktaildb.com/api/json/v1/${KEYS}/search.php?s=${word}`)
+    const info = await axios.get(`https://www.thecocktaildb.com/api/json/v1/${1}/search.php?s=${word}`)
 
     if (!!info.data.drinks) {
 
